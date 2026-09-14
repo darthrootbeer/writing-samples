@@ -1,6 +1,8 @@
 # Building a documentation system, not writing documentation
 
-How I directed an AI-assisted pipeline that rebuilt Forage's developer docs, restructured 135 pages under a real information architecture, and shipped a documentation MCP server and llms.txt for AI coding assistants.
+How I directed an AI-assisted pipeline that rebuilt Forage's developer docs, restructured 42 of roughly 110 pages under a real information architecture, and shipped a documentation MCP server and llms.txt for AI coding assistants.
+
+**Verify it yourself:** [docs.joinforage.app](https://docs.joinforage.app) is the live site — every claim below checks against it directly.
 
 ## Role, period, what this is
 
@@ -60,7 +62,7 @@ That's the real shift. Publishing docs for AI consumption isn't just a markdown 
 
 **Split docs into guides and API reference, not just "docs."** Two different jobs: a guide teaches a workflow, a reference answers a specific lookup mid-build. Mixing them meant either type of reader had to skim past the other type's content to find what they needed.
 
-**Built the audit tool before doing the restructure by hand.** Running a tool 203 times to flag type-mixing across the corpus is a different scale of work than eyeballing 135 pages. The tool made the restructure something I could direct and check, rather than something I had to do page by page myself.
+**Built the audit tool before doing the restructure by hand.** Running a tool 203 times to flag type-mixing across the corpus is a different scale of work than eyeballing 110 pages. The tool made the restructure something I could direct and check, rather than something I had to do page by page myself.
 
 **Kept `execute-request` explicit about hitting production.** The MCP server's four lookup tools are safe to explore freely. The fifth runs real transactions against live payment data. The docs call that out with a direct warning rather than assuming a developer will read the fine print, because a wrong assumption there costs real money, not just wasted time.
 

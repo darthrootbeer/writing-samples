@@ -58,7 +58,7 @@ Published help center documentation. I wrote these.
 
 | Sample | What it shows |
 |---|---|
-| [Formatting keyboard shortcuts](style-guide/formatting-keyboard-shortcuts.md) | Rule-writing that survives many writers |
+| [Formatting keyboard shortcuts](style-guide/formatting-keyboard-shortcuts.md) | Rule-writing that survives many writers, in a deliberately playful house voice |
 | [Using graphics in documentation](assets/style-guide-using-graphics.pdf) | Screenshot conventions and accessibility, kept as a PDF because the images are the argument |
 
 ---

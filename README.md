@@ -58,6 +58,14 @@ Published help center documentation. I wrote these.
 | [Formatting keyboard shortcuts](style-guide/formatting-keyboard-shortcuts.md) | Rule-writing that survives many writers, in a deliberately playful house voice |
 | [Using graphics in documentation](assets/style-guide-using-graphics.pdf) | Screenshot conventions and accessibility, kept as a PDF because the images are the argument |
 
+### Video
+
+A different skill than everything above, included because some roles ask for it directly: on-camera, short-form product walkthroughs.
+
+| Sample | What it shows |
+|---|---|
+| [Super Powered AI Collections in Perplexity](https://www.youtube.com/watch?v=urR4wm1OFw0) | Talking-head product walkthrough — scripted, on-camera, music, captions, and a bit of humor |
+
 ---
 
 ## On format

@@ -43,6 +43,7 @@ See Examples below for detailed scenarios.
 This single cell formula requires the following values (columns) to exist in the Google Sheet:
 
 - **ViewCountLastYear**: The number of views the content received in the last year.
+- **ViewCountAllTime**: The total number of views the content has ever received.
 - **ViewsPerYear**: The calculated average number of views per year since the content was created. This is derived from `ViewCountAllTime / (DaysSinceCreation / 365)`.
 - **DaysSinceCreation**: The total number of days since the content was created.
 - **DaysSinceEdited**: The number of days since the content was last updated.
@@ -110,7 +111,7 @@ This content is very old and has seen a significant drop in views in the last ye
 - ViewCountLastYear: 10
 - ViewCountAllTime: 1000
 - DaysSinceEdited: 800 (more than 2 years)
-- Result: "[001] Last year's views (10) have had a large decline from the lifetime average (50), and it hasn't been updated in over 2 years."
+- Result: "[001] Last year's views (10) have had a large decline from the lifetime average (365), and it hasn't been updated in over 2 years."
 
 ### [002] Moderate urgency due to views
 
@@ -120,7 +121,7 @@ Although this content has been updated more recently, the views have dropped sig
 - ViewCountLastYear: 10
 - ViewCountAllTime: 1000
 - DaysSinceEdited: 300 (less than 2 years)
-- Result: "[002] Last year's views (10) have had a large decline from the lifetime average (50)."
+- Result: "[002] Last year's views (10) have had a large decline from the lifetime average (365)."
 
 ### [003] Moderate urgency due to lack of updates
 

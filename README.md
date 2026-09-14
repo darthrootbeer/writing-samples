@@ -13,16 +13,13 @@ system that produced it.** Those are different claims and they should not be blu
 
 ## Start here
 
-If you have five minutes and you are hiring a **Documentation Engineer**:
+Five samples, ranked by what they prove:
 
 1. [Building a documentation system, not writing documentation](systems-and-tooling/documentation-system-forage.md) — a 20-stage AI-assisted pipeline, a full Diátaxis restructure, and a documentation MCP server. The site is public and you can check every claim against it.
 2. [Documentation work intake automation](systems-and-tooling/work-intake-automation.md) — a 23-step automation that turned an untracked request queue into routed, acknowledged work.
-
-If you are hiring an **Information Architect**:
-
-1. [Documentation tooling UX research](information-architecture/documentation-tooling-ux-research.md) — survey research on an internal wiki, with a flaw in its own measurement scale named in the report.
-2. [Consolidating two intake forms into one](information-architecture/intake-form-consolidation.md) — field-by-field analysis with a recorded reason for every field kept, merged, or cut.
 3. [Scoring documentation pages for freshness](information-architecture/page-freshness-scoring.md) — content lifecycle triage, so maintenance goes where it matters.
+4. [Consolidating two intake forms into one](information-architecture/intake-form-consolidation.md) — field-by-field analysis with a recorded reason for every field kept, merged, or cut.
+5. [Documentation tooling UX research](information-architecture/documentation-tooling-ux-research.md) — survey research on an internal wiki, with a flaw in its own measurement scale named in the report.
 
 ---
 

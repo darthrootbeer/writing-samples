@@ -28,7 +28,7 @@ flowchart LR
     D --> E[Review]
     E --> F[Publish]
 
-    classDef ai fill:#e8f0fe,stroke:#4285f4
+    classDef ai fill:#e8f0fe,stroke:#4285f4,color:#1a1a2e
     class B,C,D ai
 ```
 

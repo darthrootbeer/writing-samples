@@ -95,7 +95,7 @@ Here, we can limit the results to only show actions starting on a certain date.
 
 ```bash
 curl --request GET \
-     --url 'https://api.mural.co/enterprise/v1/audit-log?filter[date][since]=2022-0<!-- unclear in source -->' \
+     --url 'https://api.mural.co/enterprise/v1/audit-log?filter[date][since]=2022-01-01' \
      --header 'Accept: application/json' \
      --header 'Authorization: apikey YOURAPIKEY'
 ```
@@ -123,7 +123,7 @@ Responses are limited to a maximum range of 30 days. If you don't define a speci
 
 ```bash
 curl --request GET \
-     --url 'https://api.mural.co/enterprise/v1/audit-log?filter[date][since]=2022-0<!-- unclear in source -->' \
+     --url 'https://api.mural.co/enterprise/v1/audit-log?filter[date][since]=2022-01-01' \
      --header 'Accept: application/json' \
      --header 'Authorization: apikey YOURAPIKEY'
 ```
@@ -172,7 +172,7 @@ In this first example, we'll do a simple audit log dump, and take everything we 
 
 ```bash
 curl --request GET \
-     --url 'https://api.mural.co/enterprise/v1/audit-log?maxResults=1000&nextToken=eyJl<!-- unclear in source -->' \
+     --url 'https://api.mural.co/enterprise/v1/audit-log?maxResults=1000&nextToken=eyJl...' \
      --header 'Accept: application/json' \
      --header 'Authorization: apikey YOURAPIKEY'
 ```

@@ -11,15 +11,16 @@ original_format: PDF (internal wiki page)
 
 # Using Google Sheets to Calculate Content Freshness
 
+**Role:** I wrote and built this scoring system.
+**Type:** Content lifecycle triage.
+
 ## Overview
 
-Using Confluence data from a custom API script, we can calculate how "fresh" pages are (and why), and recommend action on the page, such as archive or update. Freshness is a magical calculation of article view counts, update recency, and content age.
+Using Confluence data from a custom API script, we can calculate how "fresh" pages are (and why), and recommend action on the page, such as archive or update. Freshness is calculated from article view counts, update recency, and content age.
 
 ## Freshness Calculation
 
 The provided Google Sheets formula identifies fresh content by age, number of views, and when the content was last updated. It incorporates these specific metrics into the output messages within the cell for a clear understanding of why content is flagged in a certain way.
-
-This formula provides a nuanced approach to content evaluation, offering specific insights into why content might need updating or further review. By including actual view counts and comparing them to the lifetime average, content managers can make more informed decisions about prioritizing updates or reevaluations based on concrete engagement metrics and update history.
 
 > **TL;DR:** We use cool maths to calculate how fresh pages are.
 >
@@ -119,7 +120,7 @@ Although this content has been updated more recently, the views have dropped sig
 - ViewCountLastYear: 10
 - ViewCountAllTime: 1000
 - DaysSinceEdited: 300 (less than 2 years)
-- Result: "Last year's views (10) have had a large decline from the lifetime average (50)."
+- Result: "[002] Last year's views (10) have had a large decline from the lifetime average (50)."
 
 ### [003] Moderate urgency due to lack of updates
 

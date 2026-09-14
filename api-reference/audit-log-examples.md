@@ -62,7 +62,7 @@ curl --request GET \
             "type": "COMPANY"
           }
        },
-       // additional 49 records
+       { "...": "49 more records omitted for brevity" }
     ],
     "nextToken": "eyJleGVjdXRpb25...BUm9vMVVRPT0ifQ=="
 }
@@ -95,6 +95,7 @@ Here, we can limit the results to only show actions starting on a certain date.
 
 ```bash
 curl --request GET \
+     --globoff \
      --url 'https://api.mural.co/enterprise/v1/audit-log?filter[date][since]=2022-01-01' \
      --header 'Accept: application/json' \
      --header 'Authorization: apikey YOURAPIKEY'
@@ -123,6 +124,7 @@ Responses are limited to a maximum range of 30 days. If you don't define a speci
 
 ```bash
 curl --request GET \
+     --globoff \
      --url 'https://api.mural.co/enterprise/v1/audit-log?filter[date][since]=2022-01-01' \
      --header 'Accept: application/json' \
      --header 'Authorization: apikey YOURAPIKEY'
@@ -258,6 +260,7 @@ First, we'll request audit log entries for the action CREATE_MURAL. Since we are
 
 ```bash
 curl --request GET \
+     --globoff \
      --url 'https://api.mural.co/enterprise/v1/audit-log?filter[action]=CREATE_MURAL' \
      --header 'Accept: application/json' \
      --header 'Authorization: apikey YOURAPIKEY'

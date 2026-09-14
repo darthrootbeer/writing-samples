@@ -12,6 +12,8 @@ original_format: PDF (internal report)
 > What follows is the original report as delivered, not a rewrite — kept in its own
 > voice so the analysis and the recommendations stand on their own record.
 
+**Role:** I designed the survey and wrote this report.
+
 # Confluence User Experience Report
 
 Conducted by the documentation team | March 22, 2024
@@ -60,7 +62,7 @@ All information was collected via Google Forms using native SSO authentication, 
 
 ### Response counts
 
-Based on channel user counts, approximately 530 people were notified of the survey on Slack. 42 people responded (about 12%). 6 of these responses were from space administrators, who answered both sets of questions.
+Based on channel user counts, approximately 530 people were notified of the survey on Slack. 42 people responded (about 8%). 6 of these responses were from space administrators, who answered both sets of questions.
 
 ### Limitations or biases
 

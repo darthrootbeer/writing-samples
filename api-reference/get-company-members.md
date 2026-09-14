@@ -17,7 +17,7 @@ You can use one or more than one parameter at a time.
 | Parameter | Description | Use case |
 |---|---|---|
 | `email` | Find out the name of a member who has a specific email address. | Find a member with the email address `jdoe@company.com`. |
-| `locked` | Find out which members are active or deactivated. A deactivated member cannot log into the system and, therefore, cannot access anything. To do this, enter true for active members and false for deactivated members. | Find deactivated members. |
+| `locked` | Find out which members are active or deactivated. A deactivated member cannot log into the system and, therefore, cannot access anything. To do this, enter true for deactivated members and false for active members. | Find deactivated members. |
 | `maxInteractions` | Find out which members have accessed the company's MURAL account no more than a specified number of times in the last three months. | Find members who have accessed the company's MURAL account at most four times in the last three months. |
 | `minInteractions` | Find out which members have accessed the company's MURAL account no less than a specified number of times in the last three months. | Find members who have accessed the company's MURAL account at least five times in the last three months. |
 | `lastSeenAfter` | Find out which members have logged in after a date that you specify. Use the date format, YYYY-MM-DD. | Find members who have logged in after October 19, 2020. |

@@ -33,7 +33,7 @@ This method uses more characters, but reduces confusion and enables screen reade
 |---|---|
 | <kbd>Control</kbd> | <kbd>Ctrl</kbd> |
 | <kbd>Caps Lock</kbd> | <kbd>Caps</kbd> |
-| <kbd>Command</kbd> | |
+| <kbd>Command</kbd> | <kbd>Cmd</kbd> |
 
 ## Capitalize key names
 

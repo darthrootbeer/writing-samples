@@ -8,6 +8,9 @@ original_format: PDF (internal report)
 > than on a product. It surveys the people who had to use an internal wiki, finds
 > where they gave up looking, and recommends structural changes. It also names a
 > flaw in its own measurement scale, which is the part worth reading.
+>
+> What follows is the original report as delivered, not a rewrite — kept in its own
+> voice so the analysis and the recommendations stand on their own record.
 
 # Confluence User Experience Report
 

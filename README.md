@@ -66,6 +66,14 @@ A different skill than everything above, included because some roles ask for it 
 |---|---|
 | [Super Powered AI Collections in Perplexity](https://www.youtube.com/watch?v=urR4wm1OFw0) | Talking-head product walkthrough — scripted, on-camera, music, captions, and a bit of humor |
 
+### Screenwriting
+
+Story writing outside of work, kept as a PDF because screenplay format is part of the craft.
+
+| Sample | What it shows | My role |
+|---|---|---|
+| [NEW KID, an animated short](creative-writing/new-kid-animated-short-screenplay.pdf) | A 16-page screenplay: a lonely eight-year-old, the Superman toy he loses in a pond, and the new girl who helps him get it back. Real-world scenes cut into the toy adventures he imagines. Third draft, 2023. | Wrote |
+
 ---
 
 ## On format

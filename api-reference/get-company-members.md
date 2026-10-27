@@ -6,6 +6,8 @@ original_format: PDF (published help center article)
 
 # Get Company Members
 
+> **Snapshot.** This is a copy of a published help center article, kept as I wrote it. Its examples ran in the vendor's online API reference, where the tabs mentioned below showed code in each language. Those tabs are not part of this copy, and the endpoint has since changed. For a reference whose examples run, see the [Harbor Library Lending API](harbor-library/README.md).
+
 How to use the company members endpoint to retrieve member information.
 
 The company members endpoint retrieves the name, email address, and other details for a member of your company using the parameters you choose.

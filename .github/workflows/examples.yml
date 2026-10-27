@@ -21,3 +21,5 @@ jobs:
       - run: pip install pyyaml
       - name: Check the json, yaml and bash blocks in the Markdown files
         run: python3 .github/scripts/check_examples.py
+      - name: Run the Harbor Library examples against the sandbox
+        run: python3 api-reference/harbor-library/tests/run_examples.py

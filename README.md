@@ -43,6 +43,12 @@ Five samples, ranked by what they prove:
 
 ### API reference
 
+**New: a complete API reference I designed and directed, with examples that run.** Then the published help center documentation I wrote.
+
+| Sample | What it shows | My role |
+|---|---|---|
+| [Harbor Library Lending API](api-reference/harbor-library/README.md) | A full reference for a made-up API: quickstart, authentication, idempotency, pagination, errors, rate limits, OpenAPI file. A sandbox runs every example, and a GitHub Action fails if one stops matching. | Designed and directed. Drafted with Claude, reviewed by four reader personas, edited by me |
+
 Published help center documentation. I wrote these.
 
 | Sample | What it shows |

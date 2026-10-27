@@ -1,0 +1,339 @@
+openapi: 3.1.0
+info:
+  title: Harbor Library Lending API
+  version: 1.0.0
+  summary: Look up books and members, and lend, renew and return books.
+  description: |
+    A fictional API made for this writing sample. Harbor Library does not exist.
+    The sandbox in `mock/server.py` answers every request in the documentation.
+
+    Any method a path does not support returns `405` with the usual error body, and any
+    unknown path returns `404`. Both are described in `docs/errors.md`.
+servers:
+  - url: https://api.harborlibrary.example/v1
+    description: Production (fictional)
+  - url: http://127.0.0.1:8080/v1
+    description: Local sandbox
+security:
+  - bearerAuth: []
+tags:
+  - name: Books
+  - name: Members
+  - name: Loans
+  - name: Fun
+paths:
+  /books:
+    get:
+      tags: [Books]
+      operationId: listBooks
+      summary: List books
+      description: Returns books, 20 per page by default. Filter by search text or by availability.
+      parameters:
+        - {$ref: '#/components/parameters/Limit'}
+        - {$ref: '#/components/parameters/Cursor'}
+        - name: q
+          in: query
+          description: Text to find in the title or the author. Not case sensitive.
+          schema: {type: string}
+          example: earthsea
+        - name: available
+          in: query
+          description: '`true` returns only books with a copy on the shelf. `false` or leaving it out returns all books. Any other value returns 400.'
+          schema: {type: boolean}
+      responses:
+        '200':
+          description: A page of books.
+          content:
+            application/json:
+              schema: {$ref: '#/components/schemas/BookPage'}
+        '400': {$ref: '#/components/responses/Error'}
+        '401': {$ref: '#/components/responses/Error'}
+        '429': {$ref: '#/components/responses/Error'}
+  /books/{book_id}:
+    get:
+      tags: [Books]
+      operationId: getBook
+      summary: Get a book
+      parameters:
+        - {$ref: '#/components/parameters/BookId'}
+      responses:
+        '200':
+          description: The book.
+          content:
+            application/json:
+              schema: {$ref: '#/components/schemas/Book'}
+        '401': {$ref: '#/components/responses/Error'}
+        '404': {$ref: '#/components/responses/Error'}
+        '429': {$ref: '#/components/responses/Error'}
+  /members/{member_id}:
+    get:
+      tags: [Members]
+      operationId: getMember
+      summary: Get a member
+      parameters:
+        - {$ref: '#/components/parameters/MemberId'}
+      responses:
+        '200':
+          description: The member.
+          content:
+            application/json:
+              schema: {$ref: '#/components/schemas/Member'}
+        '401': {$ref: '#/components/responses/Error'}
+        '404': {$ref: '#/components/responses/Error'}
+        '429': {$ref: '#/components/responses/Error'}
+  /loans:
+    get:
+      tags: [Loans]
+      operationId: listLoans
+      summary: List loans
+      parameters:
+        - {$ref: '#/components/parameters/Limit'}
+        - {$ref: '#/components/parameters/Cursor'}
+        - name: member_id
+          in: query
+          description: Return only this member's loans.
+          schema: {type: string}
+          example: mem_ada
+        - name: status
+          in: query
+          description: Return only loans in this state.
+          schema: {$ref: '#/components/schemas/LoanStatus'}
+      responses:
+        '200':
+          description: A page of loans.
+          content:
+            application/json:
+              schema: {$ref: '#/components/schemas/LoanPage'}
+        '400': {$ref: '#/components/responses/Error'}
+        '401': {$ref: '#/components/responses/Error'}
+        '429': {$ref: '#/components/responses/Error'}
+    post:
+      tags: [Loans]
+      operationId: createLoan
+      summary: Lend a book
+      description: |
+        Lends one copy of a book to a member for 21 days. Send an `Idempotency-Key`
+        header so a retry after a network failure cannot lend the book twice.
+      parameters:
+        - name: Idempotency-Key
+          in: header
+          description: A unique string, 1 to 64 characters. The same key with the same body returns the first loan again. The same key with a different body returns 409 `idempotency_key_reused`. Only successful lends are stored.
+          schema: {type: string, minLength: 1, maxLength: 64}
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [member_id, book_id]
+              properties:
+                member_id: {type: string, example: mem_grace}
+                book_id: {type: string, example: bk_003}
+      responses:
+        '201':
+          description: The new loan. A repeat of an earlier request with the same `Idempotency-Key` returns the first loan again, with `Idempotent-Replay` set.
+          headers:
+            Location:
+              description: Path of the new loan.
+              schema: {type: string}
+            Idempotent-Replay:
+              description: '`true` when this is the first response replayed for a repeated `Idempotency-Key`.'
+              schema: {type: string, enum: ['true']}
+          content:
+            application/json:
+              schema: {$ref: '#/components/schemas/Loan'}
+        '400': {$ref: '#/components/responses/Error'}
+        '401': {$ref: '#/components/responses/Error'}
+        '403': {$ref: '#/components/responses/Error'}
+        '404': {$ref: '#/components/responses/Error'}
+        '409': {$ref: '#/components/responses/Error'}
+        '429': {$ref: '#/components/responses/Error'}
+  /loans/{loan_id}:
+    get:
+      tags: [Loans]
+      operationId: getLoan
+      summary: Get a loan
+      parameters:
+        - {$ref: '#/components/parameters/LoanId'}
+      responses:
+        '200':
+          description: The loan.
+          content:
+            application/json:
+              schema: {$ref: '#/components/schemas/Loan'}
+        '401': {$ref: '#/components/responses/Error'}
+        '404': {$ref: '#/components/responses/Error'}
+        '429': {$ref: '#/components/responses/Error'}
+  /loans/{loan_id}/renew:
+    post:
+      tags: [Loans]
+      operationId: renewLoan
+      summary: Renew a loan
+      description: Adds 14 days to the due date. A loan can be renewed twice, and not once it is overdue.
+      parameters:
+        - {$ref: '#/components/parameters/LoanId'}
+      responses:
+        '200':
+          description: The loan with its new due date.
+          content:
+            application/json:
+              schema: {$ref: '#/components/schemas/Loan'}
+        '401': {$ref: '#/components/responses/Error'}
+        '404': {$ref: '#/components/responses/Error'}
+        '409': {$ref: '#/components/responses/Error'}
+        '429': {$ref: '#/components/responses/Error'}
+  /loans/{loan_id}/return:
+    post:
+      tags: [Loans]
+      operationId: returnLoan
+      summary: Return a book
+      parameters:
+        - {$ref: '#/components/parameters/LoanId'}
+      responses:
+        '200':
+          description: The loan, now returned.
+          content:
+            application/json:
+              schema: {$ref: '#/components/schemas/Loan'}
+        '401': {$ref: '#/components/responses/Error'}
+        '404': {$ref: '#/components/responses/Error'}
+        '409': {$ref: '#/components/responses/Error'}
+        '429': {$ref: '#/components/responses/Error'}
+  /teapot:
+    get:
+      tags: [Fun]
+      operationId: getTeapot
+      summary: Ask the library for coffee
+      description: An Easter egg. Needs no API key. Always returns 418. See docs/easter-eggs.md.
+      security: []
+      responses:
+        '418': {$ref: '#/components/responses/Error'}
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      description: 'Send your key as `Authorization: Bearer YOUR_KEY`. The sandbox key is `hl_test_sandbox`.'
+  parameters:
+    Limit:
+      name: limit
+      in: query
+      description: How many items to return, from 1 to 100.
+      schema: {type: integer, minimum: 1, maximum: 100, default: 20}
+    Cursor:
+      name: cursor
+      in: query
+      description: Pass the `next_cursor` from the last page to get the next one.
+      schema: {type: string}
+    BookId:
+      name: book_id
+      in: path
+      required: true
+      schema: {type: string}
+      example: bk_042
+    MemberId:
+      name: member_id
+      in: path
+      required: true
+      schema: {type: string}
+      example: mem_ada
+    LoanId:
+      name: loan_id
+      in: path
+      required: true
+      schema: {type: string}
+      example: loan_0002
+  responses:
+    Error:
+      description: An error. The `code` field is stable and safe to branch on. See docs/errors.md.
+      headers:
+        X-Request-Id:
+          description: Quote this when you contact support. Also in the body as `request_id`.
+          schema: {type: string}
+        X-RateLimit-Limit:
+          description: Requests allowed per minute.
+          schema: {type: integer}
+        X-RateLimit-Remaining:
+          description: Requests left in this minute.
+          schema: {type: integer}
+        Retry-After:
+          description: Only on 429. Seconds to wait before retrying.
+          schema: {type: integer}
+      content:
+        application/json:
+          schema: {$ref: '#/components/schemas/ErrorResponse'}
+  schemas:
+    LoanStatus:
+      type: string
+      enum: [active, overdue, returned]
+    Book:
+      type: object
+      required: [id, title, author, copies_total, copies_available]
+      properties:
+        id: {type: string, example: bk_042}
+        title: {type: string, example: The Hitchhiker's Guide to the Galaxy}
+        author: {type: string, example: Douglas Adams}
+        copies_total: {type: integer, example: 42}
+        copies_available: {type: integer, example: 42}
+    Member:
+      type: object
+      required: [id, name, card_status, fines_cents, open_loans]
+      properties:
+        id: {type: string, example: mem_ada}
+        name: {type: string, example: Ada Lovelace}
+        card_status:
+          type: string
+          enum: [active, blocked]
+          description: '`blocked` when fines are above $10.00. A blocked member cannot borrow.'
+        fines_cents: {type: integer, description: Fines owed, in cents., example: 0}
+        open_loans: {type: integer, description: Loans that are active or overdue., example: 1}
+    Loan:
+      type: object
+      required: [id, member_id, book_id, status, borrowed_on, due_on, returned_on, renewals]
+      properties:
+        id: {type: string, example: loan_0002}
+        member_id: {type: string, example: mem_ada}
+        book_id: {type: string, example: bk_002}
+        status: {$ref: '#/components/schemas/LoanStatus'}
+        borrowed_on: {type: string, format: date, example: '2026-10-12'}
+        due_on: {type: string, format: date, example: '2026-11-02'}
+        returned_on: {type: [string, 'null'], format: date}
+        renewals: {type: integer, minimum: 0, maximum: 2}
+    Page:
+      type: object
+      required: [data, has_more, next_cursor]
+      properties:
+        has_more: {type: boolean}
+        next_cursor:
+          type: [string, 'null']
+          description: Pass this as `cursor` to get the next page. `null` on the last page.
+    BookPage:
+      allOf:
+        - {$ref: '#/components/schemas/Page'}
+        - type: object
+          properties:
+            data:
+              type: array
+              items: {$ref: '#/components/schemas/Book'}
+    LoanPage:
+      allOf:
+        - {$ref: '#/components/schemas/Page'}
+        - type: object
+          properties:
+            data:
+              type: array
+              items: {$ref: '#/components/schemas/Loan'}
+    ErrorResponse:
+      type: object
+      required: [error]
+      properties:
+        error:
+          type: object
+          required: [status, code, message, doc_url, request_id]
+          properties:
+            status: {type: integer, example: 409}
+            code: {type: string, example: book_unavailable}
+            message: {type: string, description: Written for a person. Do not match on it.}
+            param: {type: string, description: The input that caused the error, when there is one.}
+            doc_url: {type: string, format: uri}
+            request_id: {type: string, description: Quote this when you contact support., example: req_000123}

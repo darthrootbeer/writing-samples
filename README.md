@@ -43,7 +43,13 @@ Five samples, ranked by what they prove:
 
 ### API reference
 
-Published help center documentation. I wrote these.
+**New: a complete API reference I designed and directed, with examples that run.** Then the published help center documentation I wrote.
+
+| Sample | What it shows | My role |
+|---|---|---|
+| [Harbor Library Lending API](api-reference/harbor-library/README.md) | A full reference for a made-up API: quickstart, authentication, idempotency, pagination, errors, rate limits, OpenAPI file. A sandbox runs every example, and a GitHub Action fails if one stops matching. | Designed and directed. Drafted with Claude, reviewed by four reader personas, edited by me |
+
+**Published snapshots** of help center pages I wrote. They are copies of the published articles. Their examples ran in the vendor's online API reference, so they are not runnable here. The Harbor Library sample above is the one you can run.
 
 | Sample | What it shows |
 |---|---|

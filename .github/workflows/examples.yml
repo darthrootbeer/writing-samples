@@ -1,0 +1,23 @@
+name: examples
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  examples:
+    name: code examples parse
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-python@v7
+        with:
+          python-version: '3.12'
+      - run: pip install pyyaml
+      - name: Check the json, yaml and bash blocks in the Markdown files
+        run: python3 .github/scripts/check_examples.py

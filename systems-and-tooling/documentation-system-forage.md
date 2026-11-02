@@ -2,13 +2,18 @@
 
 How I directed an AI-assisted pipeline that rebuilt Forage's developer docs, restructured 42 of roughly 110 pages under a real information architecture, and shipped a documentation MCP server and llms.txt for AI coding assistants.
 
-**Verify it yourself:** [docs.joinforage.app](https://docs.joinforage.app) is the live site — every claim below checks against it directly.
+**Written for** hiring managers and documentation leads, **to show** how I run a documentation function as a system rather than page by page.
+
+**Verify it yourself:** [docs.joinforage.app](https://docs.joinforage.app) is the live site. Every claim about the published docs below can be checked against it.
 
 ## Role, period, what this is
 
-I was a Documentation Engineer at Forage, a payments company that processes SNAP/EBT and HSA/FSA transactions for platforms and merchants. By 2026 my actual job was not writing docs. It was directing and building the system that produced them.
+I was a Documentation Engineer at Forage, a payments company that lets online stores accept SNAP/EBT (U.S. food assistance benefits, paid with an EBT card) and HSA/FSA (pre-tax health spending accounts). By 2026 my actual job was not writing docs. It was directing and building the system that produced them.
 
-That distinction is the point, not a caveat. Roughly 65 to 75 percent of my time went into tooling: building and running a multi-stage pipeline where AI did the research, drafting, and verification, under my direction and review. I selected the framework, designed the pipeline, built the tools, and checked the output. I did not personally draft the final published pages. Directing an AI-assisted system to produce accurate, well-structured technical docs at scale is the skill. This case study is about that system.
+By my own estimate, 65 to 75 percent of my time went into tooling: building and running a multi-stage pipeline where AI did the research, drafting, and verification, under my direction and review. I did not personally draft the final published pages. This case study is about the system that did.
+
+**What I decided and built:** the choice of framework, the pipeline's stages and the order they run in, the tools at each stage, what counted as verified, and every publish decision.
+**What the AI did:** research, first drafts, and fact-checks against the code, inside the stages I set up. I reviewed its output at each human checkpoint.
 
 ## The problem
 
@@ -16,11 +21,11 @@ Forage's docs had grown the way most docs grow: page by page, as features shippe
 
 At the same time, a new category of reader showed up: AI coding assistants. Cursor, Claude Code, and similar tools were increasingly the first thing a developer pointed at our docs, and they needed something different from a human skimming a page. They needed structure they could parse and an index they could crawl.
 
-Two audiences, one set of docs, neither well served by the old structure.
+The old structure served neither audience well.
 
 ## What was built
 
-**The pipeline.** I built a roughly 20-stage documentation pipeline: intake a change or a doc request, research the actual behavior against source material, draft, run structure and voice checks, verify factual claims against the codebase, route for subject-matter review, then publish. It's been run 61 times. Each stage is a discrete, auditable step, not one black-box prompt. That's what let me review the process instead of just trusting the output.
+**The pipeline.** I built a roughly 20-stage documentation pipeline: intake a change or a doc request, research the actual behavior against source material, draft, run structure and voice checks, verify factual claims against the codebase, route for subject-matter review, then publish. Its run log shows 61 runs. Each stage is a discrete, auditable step, not one black-box prompt. That's what let me review the process instead of just trusting the output.
 
 ```mermaid
 flowchart LR
@@ -36,21 +41,21 @@ flowchart LR
 
 Research, drafting, and verification are AI-assisted stages, run under my direction. Review and publish are human decision points.
 
-**The Diátaxis restructure.** I researched documentation framework options independently and picked Diátaxis, which separates content into four clear types: tutorials, how-to guides, reference, and explanation. I implemented it across the corpus myself. Seven full guide sets were rebuilt under the new structure. About 42 of roughly 110 guide and reference pages were restructured. A dedicated audit-and-split tool, which flags pages mixing types and proposes how to split them, has been run 203 times.
+**The Diátaxis restructure.** I researched documentation framework options independently and picked Diátaxis, which separates content into four clear types: tutorials, how-to guides, reference, and explanation. I implemented it across the corpus myself. Seven full guide sets were rebuilt under the new structure. About 42 of roughly 110 guide and reference pages were restructured. A dedicated audit-and-split tool, which flags pages mixing types and proposes how to split them, ran 203 times by its own usage count, more than any other tool in the system.
 
-**llms.txt and the MCP server.** Two artifacts built specifically for AI readers, covered in detail below.
+**llms.txt and the MCP server.** Two things built for AI readers, covered below. An MCP server (Model Context Protocol) is a small service that lets an AI assistant look things up while it works.
 
 ## Why machine-readable docs matter now
 
-This is the forward-looking part, and it's worth taking seriously: docs increasingly have two audiences, developers and the AI tools developers use, and those tools need different things than a person reading in a browser.
+Docs now have two audiences: developers, and the AI tools developers use. Those tools need different things than a person reading in a browser.
 
 **llms.txt** is a plain-text index published at `docs.joinforage.app/llms.txt`. It lists every guide and reference page as a link with a one-line description, so an AI agent can find the right page without crawling the whole site. Many tools now check for this file automatically. Every page also supports a `.md` suffix for a clean markdown version, no HTML stripping required.
 
 **The Forage MCP server** goes further: it lets a connected AI coding assistant query the API documentation directly while a developer works, instead of relying on training data that might be stale or wrong. It exposes five tools. Four are read-only lookups: list every API endpoint, search endpoints by keyword, get the full schema and error catalog for one endpoint, and get the sandbox and production base URLs. The fifth, `execute-request`, runs a live API call using the developer's own credentials.
 
-I built the MCP tool-set documentation on the developer-resources page, and the skill that generated its hero image. The MCP Tools Reference page itself, cataloging what each of the five tools returns and where their coverage stops, is confirmed live and part of the system I directed. That reference does something most tool docs skip: it states plainly where the tools *don't* help. The API reference tools only know the OpenAPI schema, so a question about integration sequencing or a required field that lives only in a guide (not the schema) can get a confidently wrong answer from an AI reasoning off the server alone. The docs say so directly, and point back to the guide.
+I built the MCP tool-set documentation on the developer-resources page, and the skill that generated its hero image. The MCP Tools Reference page itself, cataloging what each of the five tools returns and where their coverage stops, is confirmed live and part of the system I directed. That reference does something most tool docs skip: it states plainly where the tools *don't* help. The API reference tools only know the OpenAPI schema (the machine-readable description of every endpoint and field), so a question about integration sequencing or a required field that lives only in a guide (not the schema) can get a confidently wrong answer from an AI reasoning off the server alone. The docs say so directly, and point back to the guide.
 
-That's the real shift. Publishing docs for AI consumption isn't just a markdown export. It means being honest, in the docs themselves, about where a tool's knowledge runs out.
+Publishing docs for AI tools takes more than a markdown export. The docs also have to say where a tool's knowledge runs out.
 
 ## Decisions worth explaining
 

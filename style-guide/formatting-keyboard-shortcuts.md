@@ -8,6 +8,8 @@ original_format: PDF (internal style guide page)
 > many writers and many years. This one picks a rule for every case someone might
 > hit, shows the wrong version next to the right one, and cites the platform
 > guidelines it follows so the rule is arguable on evidence instead of taste.
+>
+> **Written for** every writer on the documentation team, **to settle** how keyboard shortcuts are formatted, once.
 
 # How to format keyboard shortcuts
 

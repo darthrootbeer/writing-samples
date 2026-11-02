@@ -9,7 +9,9 @@ original_format: PDF (internal report)
 > where they gave up looking, and recommends structural changes. It also names a
 > flaw in its own measurement scale, which is the part worth reading.
 >
-> What follows is the original report as delivered, not a rewrite — kept in its own
+> **Written for** the documentation team and engineering leads who owned the wiki, **to decide** what to change in its structure.
+>
+> What follows is the original report as delivered, not a rewrite, kept in its own
 > voice so the analysis and the recommendations stand on their own record.
 
 **Role:** I designed the survey and wrote this report.

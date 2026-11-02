@@ -1,10 +1,11 @@
 # Documentation Work Intake Automation
 
 A 23-step automation that turned an unstructured documentation request queue into
-tracked, routed, acknowledged work items — with no manual triage.
+tracked, routed, acknowledged work items, with no one sorting requests by hand.
 
 **Role:** I designed and built this. **Tools:** Google Forms, Zapier, Jira, Slack.
 **Type:** Internal tooling for a documentation team.
+**Written for** documentation managers and team leads, **to show** how a messy request queue becomes tracked work without someone sorting it by hand.
 
 ---
 
@@ -13,7 +14,7 @@ tracked, routed, acknowledged work items — with no manual triage.
 Documentation requests arrived by Slack message, email, hallway conversation, and
 occasionally a Jira ticket someone filed themselves. There was no single queue, no
 consistent set of required fields, and no acknowledgement to the requester. Two
-separate intake forms existed — one for support content, one for API docs — and
+separate intake forms existed, one for support content and one for API docs, and
 they asked for different things, neither of them complete.
 
 Three consequences followed. Work got lost. Requests arrived without the
@@ -87,7 +88,7 @@ connected, which is what makes the queue auditable after the fact.
 **Acknowledgement as a feature.** The requester gets a Slack DM with their ticket
 details, and that message is copied into the ticket as a comment. Both sides can
 see the same thing. Most of the perceived unresponsiveness of the old process was
-not slow work — it was silence.
+not slow work. It was silence.
 
 **Urgency as a branch, not a priority field.** Urgent requests post to a channel.
 Making urgency visible to a group rather than to a queue is what made it a real

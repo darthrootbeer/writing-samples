@@ -1,4 +1,4 @@
-# Writing Samples — Ben Goddard
+# Ben Goddard: Writing Samples
 
 Documentation engineering and information architecture work, 2020 to 2026.
 
@@ -13,13 +13,14 @@ system that produced it.** Those are different claims and they should not be blu
 
 ## Start here
 
-Five samples, ranked by what they prove:
+Six samples, ranked by what they prove. The first one runs: every example in it is tested.
 
-1. [Building a documentation system, not writing documentation](systems-and-tooling/documentation-system-forage.md) — a 20-stage AI-assisted pipeline, a full Diátaxis restructure, and a documentation MCP server. The site is public and you can check every claim against it.
-2. [Documentation work intake automation](systems-and-tooling/work-intake-automation.md) — a 23-step automation that turned an untracked request queue into routed, acknowledged work.
-3. [Scoring documentation pages for freshness](information-architecture/page-freshness-scoring.md) — content lifecycle triage, so maintenance goes where it matters.
-4. [Consolidating two intake forms into one](information-architecture/intake-form-consolidation.md) — field-by-field analysis with a recorded reason for every field kept, merged, or cut.
-5. [Documentation tooling UX research](information-architecture/documentation-tooling-ux-research.md) — survey research on an internal wiki, with a flaw in its own measurement scale named in the report.
+1. [Harbor Library Lending API](api-reference/harbor-library/README.md): a complete API reference with a quickstart you can run in about five minutes. A sandbox runs every example, and a check fails if any example stops matching.
+2. [Building a documentation system, not writing documentation](systems-and-tooling/documentation-system-forage.md): a 20-stage AI-assisted pipeline, a full Diátaxis restructure, and a documentation MCP server. The site is public and you can check every claim against it.
+3. [Documentation work intake automation](systems-and-tooling/work-intake-automation.md): a 23-step automation that turned an untracked request queue into routed, acknowledged work.
+4. [Scoring documentation pages for freshness](information-architecture/page-freshness-scoring.md): content lifecycle triage, so maintenance goes where it matters.
+5. [Consolidating two intake forms into one](information-architecture/intake-form-consolidation.md): field-by-field analysis with a recorded reason for every field kept, merged, or cut.
+6. [Documentation tooling UX research](information-architecture/documentation-tooling-ux-research.md): survey research on an internal wiki, with a flaw in its own measurement scale named in the report.
 
 ---
 
@@ -70,7 +71,7 @@ A different skill than everything above, included because some roles ask for it 
 
 | Sample | What it shows |
 |---|---|
-| [Super Powered AI Collections in Perplexity](https://www.youtube.com/watch?v=urR4wm1OFw0) | Talking-head product walkthrough — scripted, on-camera, music, captions, and a bit of humor |
+| [Super Powered AI Collections in Perplexity](https://www.youtube.com/watch?v=urR4wm1OFw0) | Talking-head product walkthrough: scripted, on-camera, music, captions, and a bit of humor |
 
 ### Screenwriting
 
@@ -101,7 +102,7 @@ Original source files are in [`assets/`](assets/).
 
 ## Related
 
-**[context-engineering-toolkit](https://github.com/darthrootbeer/context-engineering-toolkit)** — the working tools: a documentation pipeline, style guides, and the architecture patterns behind them. That repo is the system. This one is the output and the reasoning.
+**[context-engineering-toolkit](https://github.com/darthrootbeer/context-engineering-toolkit)** holds the working tools: a documentation pipeline, style guides, and the architecture patterns behind them. That repo is the system. This one is the output and the reasoning.
 
 ---
 

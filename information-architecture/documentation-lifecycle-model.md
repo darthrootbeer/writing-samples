@@ -6,6 +6,7 @@ team the same question: what happens after I file a request?
 **Role:** I built this model and the workshop canvas it came from.
 **Original format:** a large collaborative whiteboard canvas.
 **Type:** Process and information-flow modeling.
+**Written for** the engineers and product managers who filed documentation requests, **to answer** what happens to a request after it is filed.
 
 ---
 
@@ -91,5 +92,5 @@ produces a corpus nobody maintains.
 Rebuilt as a diagram from the original workshop canvas. Company and product names
 removed. The stages, owners, and gates are unchanged.
 
-Related: [Scoring pages for freshness](page-freshness-scoring.md) — the tooling
+Related: [Scoring pages for freshness](page-freshness-scoring.md): the tooling
 behind the "monitor and revisit" stage above.

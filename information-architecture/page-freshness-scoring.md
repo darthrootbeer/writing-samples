@@ -7,7 +7,7 @@ original_format: PDF (internal wiki page)
 > **Why this is here.** A wiki with a few thousand pages has no useful signal for
 > what to fix first. This scores every page on how recently it was updated and how
 > often it gets read, so maintenance goes where it matters instead of where someone
-> happens to look. Written for the people who had to run it, not for an audience.
+> happens to look. **Written for** the documentation team that maintained the wiki, **to decide** which pages to update first.
 
 # Using Google Sheets to Calculate Content Freshness
 
@@ -169,4 +169,4 @@ The other colors in this screenshot are insignificant. We're using alternating c
 
 *Internal documentation. Company and internal page names removed.*
 
-Related: [How documentation work actually moves](documentation-lifecycle-model.md) — the process this scoring feeds.
+Related: [How documentation work actually moves](documentation-lifecycle-model.md): the process this scoring feeds.

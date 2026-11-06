@@ -6,7 +6,8 @@ with a reason recorded for every field kept, cut, or added.
 
 **Role:** I did this analysis and designed the resulting form.
 **Type:** Information architecture / content modeling.
-**Companion piece:** [Work Intake Automation](../systems-and-tooling/work-intake-automation.md) — the automation this form feeds.
+**Written for** the documentation team and the people who filed requests, **to get** one form that asks for everything a writer needs and nothing else.
+**Companion piece:** [Work Intake Automation](../systems-and-tooling/work-intake-automation.md) : the automation this form feeds.
 
 ---
 
@@ -71,7 +72,7 @@ recorded here because a form without it drifts back within a year, which is how
 there came to be two forms in the first place.
 
 Making urgency a choice with visible tradeoffs was the change that mattered most.
-It converted an unstated assumption — everything is urgent — into a decision the
+It converted an unstated assumption (everything is urgent) into a decision the
 requester makes knowingly.
 
 ---

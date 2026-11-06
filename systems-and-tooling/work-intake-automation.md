@@ -5,7 +5,8 @@ tracked, routed, acknowledged work items, with no one sorting requests by hand.
 
 **Role:** I designed and built this. **Tools:** Google Forms, Zapier, Jira, Slack.
 **Type:** Internal tooling for a documentation team.
-**Written for** documentation managers and team leads, **to show** how a messy request queue becomes tracked work without someone sorting it by hand.
+**Built for** anyone who needed work from the documentation team. A monitoring piece watched the process
+itself and alerted the team's manager and leads when it broke, so they knew tickets were not being created properly.
 
 ---
 

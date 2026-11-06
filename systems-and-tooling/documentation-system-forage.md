@@ -25,7 +25,7 @@ The old structure served neither audience well.
 
 ## What was built
 
-**The pipeline.** I built a roughly 20-stage documentation pipeline: intake a change or a doc request, research the actual behavior against source material, draft, run structure and voice checks, verify factual claims against the codebase, route for subject-matter review, then publish. Its run log shows 61 runs. Each stage is a discrete, auditable step, not one black-box prompt. That's what let me review the process instead of just trusting the output.
+**The pipeline.** I built a roughly 20-stage documentation pipeline: intake a change or a doc request, research the actual behavior against source material, draft, run structure and voice checks, verify factual claims against the codebase, route for subject-matter review, then publish. Its run log shows at least 61 runs as of July 2026. Each stage is a discrete, auditable step, not one black-box prompt. That's what let me review the process instead of just trusting the output.
 
 ```mermaid
 flowchart LR
@@ -41,7 +41,7 @@ flowchart LR
 
 Research, drafting, and verification are AI-assisted stages, run under my direction. Review and publish are human decision points.
 
-**The Diátaxis restructure.** I researched documentation framework options independently and picked Diátaxis, which separates content into four clear types: tutorials, how-to guides, reference, and explanation. I implemented it across the corpus myself. Seven full guide sets were rebuilt under the new structure. About 42 of roughly 110 guide and reference pages were restructured. A dedicated audit-and-split tool, which flags pages mixing types and proposes how to split them, ran 203 times by its own usage count, more than any other tool in the system.
+**The Diátaxis restructure.** I researched documentation framework options independently and picked Diátaxis, which separates content into four clear types: tutorials, how-to guides, reference, and explanation. I implemented it across the corpus myself. Seven full guide sets were rebuilt under the new structure. About 42 of roughly 110 guide and reference pages were restructured. A dedicated audit-and-split tool, which flags pages mixing types and proposes how to split them, ran at least 203 times by its own usage count as of July 2026, more than any other tool in the system.
 
 **llms.txt and the MCP server.** Two things built for AI readers, covered below. An MCP server (Model Context Protocol) is a small service that lets an AI assistant look things up while it works.
 
@@ -67,7 +67,7 @@ Publishing docs for AI tools takes more than a markdown export. The docs also ha
 
 **Split docs into guides and API reference, not just "docs."** Two different jobs: a guide teaches a workflow, a reference answers a specific lookup mid-build. Mixing them meant either type of reader had to skim past the other type's content to find what they needed.
 
-**Built the audit tool before doing the restructure by hand.** Running a tool 203 times to flag type-mixing across the corpus is a different scale of work than eyeballing 110 pages. The tool made the restructure something I could direct and check, rather than something I had to do page by page myself.
+**Built the audit tool before doing the restructure by hand.** Running a tool at least 203 times to flag type-mixing across the corpus is a different scale of work than eyeballing 110 pages. The tool made the restructure something I could direct and check, rather than something I had to do page by page myself.
 
 **Kept `execute-request` explicit about hitting production.** The MCP server's four lookup tools are safe to explore freely. The fifth runs real transactions against live payment data. The docs call that out with a direct warning rather than assuming a developer will read the fine print, because a wrong assumption there costs real money, not just wasted time.
 
